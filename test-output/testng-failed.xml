@@ -3,11 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.seleniumAutomation.DataProvide">
+      <class name="com.standalone.FlipkartHeadphones">
         <methods>
-          <include name="testCaseDataRun"/>
+          <include name="openBrowser"/>
+          <include name="tearDown"/>
+          <include name="switchingToNextWindow"/>
+          <include name="searchingHeadphone"/>
         </methods>
-      </class> <!-- com.seleniumAutomation.DataProvide -->
+      </class> <!-- com.standalone.FlipkartHeadphones -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
