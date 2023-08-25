@@ -32,7 +32,6 @@ public class FlipkartHeadphones extends BaseTest {
 			if (popUp.isDisplayed()) {
 				Set<String> windowIDs = driver.getWindowHandles();
 				for (String windowId : windowIDs) {
-					// System.out.println(windowId);
 					driver.switchTo().window(windowId);
 				}
 				driver.findElement(
@@ -53,16 +52,10 @@ public class FlipkartHeadphones extends BaseTest {
 		driver.findElement(By.xpath("//input[@name='q']"))
 				.sendKeys("Sony headphones");
 		driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
-
-		// wait.until(ExpectedConditions.visibilityOfElementLocated(
-		// By.xpath("//span[contains(text(),'Sony')]")));
 		waitingForElement(By.xpath("//span[contains(text(),'Sony')]"));
-
-		// Getting the name of the product
 		productName = driver.findElement(By.xpath(
 				"(//a[normalize-space()='SONY ZX110A Wired without Mic Headset'])[1]"))
 				.getAttribute("title");
-		// continue from step 4 -> add to cart
 		System.out.println("Product Name on the home page: " + productName);
 		driver.findElement(By.xpath(
 				"(//a[normalize-space()='SONY ZX110A Wired without Mic Headset'])[1]"))
@@ -74,7 +67,6 @@ public class FlipkartHeadphones extends BaseTest {
 	public void switchingToNextWindow() {
 		Set<String> searchWindowID = driver.getWindowHandles();
 		for (String windowId : searchWindowID) {
-			// System.out.println(windowId);
 			driver.switchTo().window(windowId);
 		}
 		waitingForElement(By.xpath("//span[contains(text(),'SONY ZX110A')]"));
