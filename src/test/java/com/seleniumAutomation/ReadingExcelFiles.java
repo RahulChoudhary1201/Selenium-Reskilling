@@ -12,6 +12,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.phptravels.ExcelReader;
+
 public class ReadingExcelFiles {
 
 	public Object[][] readExcelFile(String filePath, String FileName, String sheetName) throws IOException {
@@ -47,14 +49,14 @@ public class ReadingExcelFiles {
 		return data;
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		ReadingExcelFiles readExcel = new ReadingExcelFiles();
 		Object myData[][] = readExcel.readExcelFile(
 				"C:\\Users\\2122119\\eclipse-workspace\\Selenium\\src\\test\\java\\com\\testdata",
-				"SampleTestData.xlsx", "Sheet1");
-		for(int i=1;i<myData.length;i++) {
-			for(int j=0;j<myData[0].length;j++) {
-				System.out.print(myData[i][j]+" ");
+				"sampleTestData.xlsx", "Sheet1");
+		for (int i = 1; i < myData.length; i++) {
+			for (int j = 0; j < myData[0].length; j++) {
+				System.out.print(myData[i][j] + " ");
 			}
 			System.out.println();
 		}
@@ -64,7 +66,6 @@ public class ReadingExcelFiles {
 //		System.out.println(myData[2][1]);
 //		System.out.println(myData[3][0]);
 //		System.out.println(myData[3][1]);
-		
 
 	}
 

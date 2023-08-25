@@ -5,14 +5,16 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	public WebDriver driver;
 
-	@BeforeClass
+	@BeforeTest
 	public void openBrowser() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -20,7 +22,7 @@ public class BaseTest {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
 	}
 
-	@AfterClass
+	@AfterTest
 	public void tearDown() {
 		driver.quit();
 	}
