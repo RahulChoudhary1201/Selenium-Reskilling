@@ -36,7 +36,6 @@ public class FlipkartHeadphones extends BaseTest {
 				}
 				driver.findElement(By.xpath("(//button[contains(text(),'✕')])[1]")).click();
 				driver.switchTo().parentFrame();
-				Thread.sleep(2000);
 			}
 
 		} catch (Exception e) {
@@ -46,8 +45,6 @@ public class FlipkartHeadphones extends BaseTest {
 
 	@Test(priority = 1)
 	public void searchingHeadphone() throws InterruptedException {
-
-		Thread.sleep(2000);
 		driver.findElement(By.xpath("//input[@name='q']")).sendKeys("Sony headphones");
 		driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
 		waitingForElement(By.xpath("//span[contains(text(),'Sony')]"));
