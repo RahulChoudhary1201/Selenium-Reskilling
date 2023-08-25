@@ -20,6 +20,7 @@ public class FlipkartHeadphones extends BaseTest {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
 	}
+
 	String productName = null;
 
 	@Test(priority = 0)
@@ -27,16 +28,13 @@ public class FlipkartHeadphones extends BaseTest {
 		driver.get("http://www.flipkart.com/");
 		waitingForElement(By.xpath("(//button[contains(text(),'✕')])[1]"));
 		try {
-			WebElement popUp = driver.findElement(
-					By.xpath("(//button[contains(text(),'✕')])[1]"));
+			WebElement popUp = driver.findElement(By.xpath("(//button[contains(text(),'✕')])[1]"));
 			if (popUp.isDisplayed()) {
 				Set<String> windowIDs = driver.getWindowHandles();
 				for (String windowId : windowIDs) {
 					driver.switchTo().window(windowId);
 				}
-				driver.findElement(
-						By.xpath("(//button[contains(text(),'✕')])[1]"))
-						.click();
+				driver.findElement(By.xpath("(//button[contains(text(),'✕')])[1]")).click();
 				driver.switchTo().parentFrame();
 				Thread.sleep(2000);
 			}
@@ -45,21 +43,19 @@ public class FlipkartHeadphones extends BaseTest {
 			System.out.println("PopUp is not displayed.");
 		}
 	}
+
 	@Test(priority = 1)
 	public void searchingHeadphone() throws InterruptedException {
 
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//input[@name='q']"))
-				.sendKeys("Sony headphones");
+		driver.findElement(By.xpath("//input[@name='q']")).sendKeys("Sony headphones");
 		driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
 		waitingForElement(By.xpath("//span[contains(text(),'Sony')]"));
-		productName = driver.findElement(By.xpath(
-				"(//a[normalize-space()='SONY ZX110A Wired without Mic Headset'])[1]"))
+		productName = driver
+				.findElement(By.xpath("(//a[normalize-space()='SONY ZX110A Wired without Mic Headset'])[1]"))
 				.getAttribute("title");
 		System.out.println("Product Name on the home page: " + productName);
-		driver.findElement(By.xpath(
-				"(//a[normalize-space()='SONY ZX110A Wired without Mic Headset'])[1]"))
-				.click();
+		driver.findElement(By.xpath("(//a[normalize-space()='SONY ZX110A Wired without Mic Headset'])[1]")).click();
 
 	}
 
@@ -70,14 +66,10 @@ public class FlipkartHeadphones extends BaseTest {
 			driver.switchTo().window(windowId);
 		}
 		waitingForElement(By.xpath("//span[contains(text(),'SONY ZX110A')]"));
-		String text = driver
-				.findElement(By.xpath("//span[contains(text(),'SONY ZX110A')]"))
-				.getText();
-		WebElement errorMsg = driver
-				.findElement(By.xpath("//div[contains(text(),'Currently')]"));
+		String text = driver.findElement(By.xpath("//span[contains(text(),'SONY ZX110A')]")).getText();
+		WebElement errorMsg = driver.findElement(By.xpath("//div[contains(text(),'Currently')]"));
 		System.out.println(errorMsg.getText());
-		Assert.assertNotEquals(productName, text,
-				"Product Name not matched with the searched result.");
+		Assert.assertNotEquals(productName, text, "Product Name not matched with the searched result.");
 
 	}
 
